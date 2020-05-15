@@ -1,3 +1,5 @@
+#参考文档：https://github.com/binarywang/weixin-java-pay-demo
+
 logging:
   level:
     org.springframework.web: info

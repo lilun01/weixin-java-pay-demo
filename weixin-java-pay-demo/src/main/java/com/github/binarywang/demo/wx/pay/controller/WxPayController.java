@@ -12,6 +12,8 @@ import com.github.binarywang.wxpay.service.WxPayService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
@@ -24,6 +26,7 @@ import java.util.Date;
 @Api("微信支付")
 @RestController
 @RequestMapping("/pay")
+@Slf4j
 @AllArgsConstructor
 public class WxPayController {
   private WxPayService wxService;
@@ -55,6 +58,13 @@ public class WxPayController {
   @PostMapping("/queryOrder")
   public WxPayOrderQueryResult queryOrder(@RequestBody WxPayOrderQueryRequest wxPayOrderQueryRequest) throws WxPayException {
     return this.wxService.queryOrder(wxPayOrderQueryRequest);
+  }
+  
+  @ApiOperation(value = "查询订单测试日志")
+  @PostMapping("/queryOrder2")
+  public WxPayOrderQueryResult queryOrde2r(@RequestBody WxPayOrderQueryRequest wxPayOrderQueryRequest) throws WxPayException {
+	  log.info("查询订单测试日志。。。。。。。。。。。。。。。。。。。。。");
+	  return null;
   }
 
   /**
